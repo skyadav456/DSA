@@ -27,12 +27,23 @@ public class Implementation {
         c.left=f; c.right=g;
         display(a );
         System.out.println();
-        System.out.println("size: "+size(a));  // size of tree
+     /*   System.out.println("size: "+size(a));
         System.out.println("Sum: "+sum(a));    // sum of all nodes
         System.out.println("Max : "+max(a));   // maximum value in the tree
         System.out.println("Min : "+min(a));   // minimum value in the tree
         System.out.println("product : +" + product(a));
+        System.out.println("level " + level(a));
+*/
+        preorder(a);
+        System.out.println();
+        postorder(a);
+        System.out.println();
+        inorder(a);
+    }
 
+    private static int level(Node root){
+        if(root==null)return 0;
+        return  1+Math.max(level(root.left),level(root.right));
     }
      private static int product(Node root){
         if(root==null) return 1;
@@ -67,6 +78,30 @@ public class Implementation {
         display(root.left);
         display(root.right);
     }
+
+    public  static void preorder(Node root){
+        if(root==null) return;
+        System.out.print(root.data+" ");
+        preorder(root.left);
+        preorder(root.right);
+
+    }
+
+    public  static void inorder(Node root){
+        if(root==null) return;
+        inorder(root.left);
+        System.out.print(root.data+" ");
+        inorder(root.right);
+    }
+
+    public  static void postorder(Node root){
+        if(root==null) return;
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.data+" ");
+    }
+
+
 
 
 }
